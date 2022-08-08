@@ -3,14 +3,23 @@ import * as Yup from "yup";
 import { Image, View } from "react-native";
 import { Form, FormField, FormSubmit } from "../components/forms";
 
+import useApi from "../hooks/useApi";
+import authApi from "../api/auth";
+
 const validationSchema = Yup.object().shape({
   email: Yup.string().required().email().label("Email"),
   password: Yup.string().required().min(4).label("Password"),
 });
 
-const handleSubmit = () => {};
-
 const LoginScreen = () => {
+  const loginApi = useApi(authApi.login);
+
+  const handleSubmit = async (data) => {
+    const result = await loginApi.request(data);
+
+    console.log(result);
+  };
+
   return (
     <View style={tw`flex-1 bg-white items-center justify-center`}>
       <View style={tw`w-full max-w-[420px] mx-auto items-center justify-center p-6`}>

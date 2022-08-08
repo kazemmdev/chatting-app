@@ -9,7 +9,9 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required().min(4).label("Password"),
 });
 
-const handleSubmit = () => {};
+const handleSubmit = () => {
+  
+};
 
 const RegisterScreen = () => {
   return (
@@ -38,7 +40,7 @@ const RegisterScreen = () => {
             textContentType="password"
             secureTextEntry={true}
           />
-          <FormSubmit title="Login" />
+          <FormSubmit title="Register" />
         </Form>
       </View>
     </View>
